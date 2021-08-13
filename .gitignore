@@ -1,0 +1,16 @@
+*.iml
+*.class
+.gradle
+.DS_Store
+.externalNativeBuild
+/app/debug
+/app/release
+/vlogging
+/captures
+*.apk
+local.properties
+.idea
+bin/
+gen/
+out/
+build/
