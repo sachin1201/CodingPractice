@@ -48,7 +48,7 @@ public class Circle {  //save as Circle.java
     }
 
     public String toString() {
-        return "Circle's radius: " + radius + " and color: " + color + "";
+        return "Circle's radius: " + radius + " and color: " + color;
     }
 
 }
