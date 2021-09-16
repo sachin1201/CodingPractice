@@ -23,7 +23,7 @@ public class Super {
 class Duper extends Super{
 
     void display() {
-        super(6);
+
         System.out.println(super.a);
     }
 }
