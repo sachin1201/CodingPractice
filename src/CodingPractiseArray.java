@@ -2,12 +2,13 @@ public class CodingPractiseArray {
 
     public static void main(String[] args) {
         CodingPractiseArray object = new CodingPractiseArray();
-        int[] arrInput = new int[]{2,4,5,7,8,9,10,12,13,14};
-        boolean doesExist = object.searchInSortedArray(arrInput, 6);
-        System.out.println("doesExist:"+doesExist);
+        int[] arrInput = new int[]{-2,-1,0,2,4,5,4,3,2};
+        boolean doesExist = object.isStrictMountainArray(arrInput);
+        System.out.println("It is a mountain array: "+doesExist);
 
+//        int[] arrOutput = object.sortedSquare(arrInput);
 //        for (int i = 0; i < arrOutput.length; i++) {
-//            System.out.print(arrOutput[i]);
+//            System.out.print(arrOutput[i] + ", ");
 //        }
     }
 
@@ -21,7 +22,6 @@ public class CodingPractiseArray {
                 counter++;
             }
         }
-
         int effectiveLength = arrInput.length - counter;
         int k = arrInput.length - 1;
         for (int i = effectiveLength - 1; i >= 0; i--, k--) {
@@ -37,14 +37,29 @@ public class CodingPractiseArray {
     //U can use another array for output
     //arrInput = {-2,-1,0,2,4,5} -> {0,1,4,4,16,25}
     private int[] sortedSquare(int[] arrInput) {
-        for (int i = 0; i < arrInput.length; i++) {
-            arrInput[i] = arrInput[i] * arrInput[i];
+        int str = 0;
+        int end = arrInput.length - 1;
+        int k = arrInput.length - 1;
+        int[] arrOutput = new int[arrInput.length];
+        while(str<end){
+            if(arrInput[str]*arrInput[str] > arrInput[end]*arrInput[end]) {
+                arrOutput[k] = arrInput[str]*arrInput[str];
+                str++;
+                k--;
+            } else if(arrInput[str]*arrInput[str] < arrInput[end]*arrInput[end]){
+                arrOutput[k] = arrInput[end]*arrInput[end];
+                end--;
+                k--;
+            } else {
+                arrOutput[k] = arrInput[str]*arrInput[str];
+                k--;
+                arrOutput[k] = arrInput[str]*arrInput[str];
+                k--;
+                str++;
+                end--;
+            }
         }
-        for (int i = 0; i < arrInput.length; i++) {
-
-        }
-
-        return arrInput;
+        return arrOutput;
     }
 
 
@@ -52,14 +67,13 @@ public class CodingPractiseArray {
     //Binary search
     //TC : o(log(n))
     private boolean searchInSortedArray(int[] arrInput, int key) {
-
         int start = 0;
         int end = arrInput.length - 1;
         int mid = 0;
-
         while (start <= end) {
             mid = (start + end) / 2;
             if (arrInput[mid] == key) {
+                System.out.println(mid);
                 return true;
             } else if (arrInput[mid] > key) {
                 end = mid - 1;
@@ -67,15 +81,25 @@ public class CodingPractiseArray {
                 start = mid + 1;
             }
         }
-
         return false;
     }
 
     //arrInput = {-2,-1,0,2,4,5, 4,3,2} => true
     //means for every arrInput[i] > arrInput[i-1] till index k and after k arrInput[i] < arrInput[i-1]
     private boolean isStrictMountainArray(int[] arrInput) {
-
-        return false;
+        int i = 0;
+        while(arrInput[i] < arrInput[i+1]) {
+            i++;
+        }
+        int j = arrInput.length - 1;
+        while(arrInput[j] < arrInput[j-1]) {
+            j--;
+        }
+        if(i == j) {
+            return true;
+        } else {
+            return false;
+        }
     }
 
 }
