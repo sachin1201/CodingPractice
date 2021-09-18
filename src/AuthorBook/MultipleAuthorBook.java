@@ -1,19 +1,19 @@
 package AuthorBook;
 
-public class MultipleAuthorBooks {
+public class MultipleAuthorBook {
 
     final private String name;
     private Author[] authors;
     private double price;
     private int qty = 0;
 
-    public MultipleAuthorBooks(String name, Author[] authors, double price) {
+    public MultipleAuthorBook(String name, Author[] authors, double price) {
         this.name = name;
         this.authors = authors;
         this.price = price;
     }
 
-    public MultipleAuthorBooks(String name, Author[] authors, double price, int qty) {
+    public MultipleAuthorBook(String name, Author[] authors, double price, int qty) {
         this.name = name;
         this.authors = authors;
         this.price = price;

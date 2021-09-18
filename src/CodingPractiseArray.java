@@ -2,9 +2,9 @@ public class CodingPractiseArray {
 
     public static void main(String[] args) {
         CodingPractiseArray object = new CodingPractiseArray();
-        int[] arrInput = new int[]{-2,-1,0,2,4,5,4,3,2};
+        int[] arrInput = new int[]{-2, -1, 0, 2, 4, 5, 4, 3, 2,2};
         boolean doesExist = object.isStrictMountainArray(arrInput);
-        System.out.println("It is a mountain array: "+doesExist);
+        System.out.println("It is a mountain array: " + doesExist);
 
 //        int[] arrOutput = object.sortedSquare(arrInput);
 //        for (int i = 0; i < arrOutput.length; i++) {
@@ -37,25 +37,25 @@ public class CodingPractiseArray {
     //U can use another array for output
     //arrInput = {-2,-1,0,2,4,5} -> {0,1,4,4,16,25}
     private int[] sortedSquare(int[] arrInput) {
-        int str = 0;
+        int start = 0;
         int end = arrInput.length - 1;
         int k = arrInput.length - 1;
         int[] arrOutput = new int[arrInput.length];
-        while(str<end){
-            if(arrInput[str]*arrInput[str] > arrInput[end]*arrInput[end]) {
-                arrOutput[k] = arrInput[str]*arrInput[str];
-                str++;
+        while (start < end) {
+            if (arrInput[start] * arrInput[start] > arrInput[end] * arrInput[end]) {
+                arrOutput[k] = arrInput[start] * arrInput[start];
+                start++;
                 k--;
-            } else if(arrInput[str]*arrInput[str] < arrInput[end]*arrInput[end]){
-                arrOutput[k] = arrInput[end]*arrInput[end];
+            } else if (arrInput[start] * arrInput[start] < arrInput[end] * arrInput[end]) {
+                arrOutput[k] = arrInput[end] * arrInput[end];
                 end--;
                 k--;
             } else {
-                arrOutput[k] = arrInput[str]*arrInput[str];
+                arrOutput[k] = arrInput[start] * arrInput[start];
                 k--;
-                arrOutput[k] = arrInput[str]*arrInput[str];
+                arrOutput[k] = arrInput[start] * arrInput[start];
                 k--;
-                str++;
+                start++;
                 end--;
             }
         }
@@ -88,14 +88,14 @@ public class CodingPractiseArray {
     //means for every arrInput[i] > arrInput[i-1] till index k and after k arrInput[i] < arrInput[i-1]
     private boolean isStrictMountainArray(int[] arrInput) {
         int i = 0;
-        while(arrInput[i] < arrInput[i+1]) {
+        while (arrInput[i] < arrInput[i + 1]) {
             i++;
         }
         int j = arrInput.length - 1;
-        while(arrInput[j] < arrInput[j-1]) {
+        while (arrInput[j] < arrInput[j - 1]) {
             j--;
         }
-        if(i == j) {
+        if (i == j) {
             return true;
         } else {
             return false;
