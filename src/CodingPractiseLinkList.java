@@ -14,8 +14,6 @@ public class CodingPractiseLinkList {
         list.show();
         String str = list.search(6);
         System.out.println(str);
-
-
     }
 
     class MyLinkList {

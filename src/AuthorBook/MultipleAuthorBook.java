@@ -45,7 +45,11 @@ public class MultipleAuthorBook {
     }
 
     public String toString() {
-        return "Book[Name= " + name + ", " + authors + ", price= " + price + ", qty= " + qty +"]";
+        return "Book[Name= " + name + ",authors={" + authors[0] + authors[1] + authors[2] + ", price= " + price + ", qty= " + qty +"]";
+    }
+
+    public String getAuthorsNames() {
+        return authors[0].getName() + "," + authors[1].getName() + "," + authors[2].getName();
     }
 
 

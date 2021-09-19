@@ -11,6 +11,7 @@ public class TestMultiAuthors {
         authors[2] = new Author("sita", "sita@gmail.com", 'f');
 
         MultipleAuthorBook obj = new MultipleAuthorBook("Java Advance", authors, 200);
+        System.out.println(obj.getName());
 
     }
 
