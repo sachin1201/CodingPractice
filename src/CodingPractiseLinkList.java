@@ -1,10 +1,7 @@
 public class CodingPractiseLinkList {
-
-
     public static void main(String[] args) {
         CodingPractiseLinkList obj = new CodingPractiseLinkList();
         obj.useMyLinkList();
-
     }
 
     private void useMyLinkList() {
@@ -15,19 +12,17 @@ public class CodingPractiseLinkList {
         list.add(5);
         list.delete(6);
         list.show();
+        String str = list.search(6);
+        System.out.println(str);
 
-        boolean isExist = list.search(4);
+
     }
-
 
     class MyLinkList {
         ListNode head;
-
         public MyLinkList() {
             this.head = null;
         }
-
-
         public void add(int value) {
             ListNode node = new ListNode(value);
             if (head == null) {
@@ -41,7 +36,6 @@ public class CodingPractiseLinkList {
                 lastNode.next = node;
             }
         }
-
         public void show() {
             ListNode node = head;
             while (node.next != null) {
@@ -57,12 +51,10 @@ public class CodingPractiseLinkList {
             while (node.value != i) {
                 prev = node;
                 node = node.next;
-
                 if (node == null) {
                     break;
                 }
             }
-
             if (node != null) {
                 prev.next = node.next;
             } else {
@@ -70,16 +62,22 @@ public class CodingPractiseLinkList {
             }
         }
 
-        public boolean search(int i) {
-
-
-
-            return false;
+        public String search(int key) {
+            ListNode node = head;
+            int count = 1;
+            while(node.value != key && node.next != null) {
+                node = node.next;
+                count++;
+            }
+            if(node.value == key) {
+                return count + "th element in list is the searched number";
+            } else {
+                return "Searched number is not present in list";
+            }
         }
     }
 
     class ListNode {
-
         int value;
         ListNode next = null;
 
