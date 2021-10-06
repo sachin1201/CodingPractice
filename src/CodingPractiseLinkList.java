@@ -2,6 +2,7 @@ public class CodingPractiseLinkList {
     public static void main(String[] args) {
         CodingPractiseLinkList obj = new CodingPractiseLinkList();
         obj.useMyLinkList();
+
     }
 
     private void useMyLinkList() {
@@ -9,16 +10,44 @@ public class CodingPractiseLinkList {
         list.add(2);
         list.add(3);
         list.add(4);
+//        list.addAtIndex(3, list.head);
         list.add(5);
-        list.delete(6);
-        list.show();
-        String str = list.search(6);
-        System.out.println(str);
-        list.deleteAtIndex(2);
-        list.show();
-        list.addAtIndex(2);
-        list.show();
+//        list.delete(6);
+//        list.show();
+//        String str = list.search(6);
+//        System.out.println(str);
+//        list.deleteAtIndex(2);
+//        list.show();
+//        list.addAtIndex(4);
+        list.showTillMaxCount(8);
 
+//        boolean hasCYcle = hasCycle(list.head);
+
+    }
+
+    private boolean hasCycle(ListNode head) {
+
+        if(head == null) {
+            return false;
+        }
+
+        ListNode fast = head;
+        ListNode slow = head;
+
+        while (fast.next != null && fast.next.next != null) {
+            if(slow == fast) {
+                return true; // linklist has a cycle
+            }
+            slow = slow.next;
+            fast = fast.next.next;
+        }
+
+        return false;
+    }
+
+    private ListNode getCycleStartingPoint(ListNode head) {
+
+        return null;
     }
 
     class MyLinkList {
@@ -39,11 +68,25 @@ public class CodingPractiseLinkList {
                 lastNode.next = node;
             }
         }
+
+
         public void show() {
             ListNode node = head;
             while (node.next != null) {
                 System.out.println(node.value);
                 node = node.next;
+            }
+            System.out.println(node.value);
+        }
+
+
+        public void showTillMaxCount(int maxCount) {
+            ListNode node = head;
+            int count = 0;
+            while (node.next != null && count < maxCount) {
+                System.out.println(node.value);
+                node = node.next;
+                count++;
             }
             System.out.println(node.value);
         }
@@ -108,20 +151,45 @@ public class CodingPractiseLinkList {
                 node = node.next;
                 count++;
             }
+
+            ListNode temp = new ListNode(20);
             if(count == 1) {
-                head.value = 20;
-                head.next = prev;
+                temp.next = head;
+                head = temp;
             }
             else if(count < index && node.next == null) {
-                System.out.println("given index is not available in list");
+                node.next = temp;
             }
             else {
-                ListNode temp = null;
-                temp.value = 20;
                 temp.next = node;
                 prev.next = temp;
             }
         }
+
+        public void addAtIndex(int index, ListNode node) {
+            int count = 1;
+            ListNode prev = head;
+            while(count < index && node.next != null){
+                prev= node;
+                node = node.next;
+                count++;
+            }
+
+            ListNode temp = new ListNode(20);
+            if(count == 1) {
+                temp.next = head;
+                head = temp;
+            }
+            else if(count < index && node.next == null) {
+                node.next = temp;
+            }
+            else {
+                temp.next = node;
+                prev.next = temp;
+            }
+        }
+
+
     }
 
     class ListNode {
