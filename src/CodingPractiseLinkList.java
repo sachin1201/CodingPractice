@@ -14,6 +14,11 @@ public class CodingPractiseLinkList {
         list.show();
         String str = list.search(6);
         System.out.println(str);
+        list.deleteAtIndex(2);
+        list.show();
+        list.addAtIndex(2);
+        list.show();
+
     }
 
     class MyLinkList {
@@ -71,6 +76,50 @@ public class CodingPractiseLinkList {
                 return count + "th element in list is the searched number";
             } else {
                 return "Searched number is not present in list";
+            }
+        }
+
+        public void deleteAtIndex(int index) {
+            ListNode node = head;
+            int count = 1;
+            ListNode prev = head;
+            while(count < index && node.next != null){
+                prev= node;
+                node = node.next;
+                count++;
+            }
+            if(count == 1) {
+                head = head.next;
+            }
+            else if(count < index && node.next == null) {
+                System.out.println("given index is not available in list");
+            }
+            else {
+                prev.next = node.next;
+            }
+        }
+
+        public void addAtIndex(int index) {
+            ListNode node = head;
+            int count = 1;
+            ListNode prev = head;
+            while(count < index && node.next != null){
+                prev= node;
+                node = node.next;
+                count++;
+            }
+            if(count == 1) {
+                head.value = 20;
+                head.next = prev;
+            }
+            else if(count < index && node.next == null) {
+                System.out.println("given index is not available in list");
+            }
+            else {
+                ListNode temp = null;
+                temp.value = 20;
+                temp.next = node;
+                prev.next = temp;
             }
         }
     }
